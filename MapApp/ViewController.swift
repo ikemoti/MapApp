@@ -9,12 +9,11 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
+    
     let mapView: MKMapView = .init()
     var locationManager: CLLocationManager?
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
@@ -24,13 +23,18 @@ class ViewController: UIViewController {
         
         let location:CLLocationCoordinate2D
                    = CLLocationCoordinate2DMake(35.68154,139.752498)
-        
         mapView.setCenter(location,animated:true)
         var region:MKCoordinateRegion = mapView.region
         region.center = location
         region.span.latitudeDelta = 0.02
         region.span.longitudeDelta = 0.02
+        let myPin = MKPointAnnotation()
+        myPin.coordinate = location
+        myPin.title = "テスト"
+        myPin.subtitle = "さぶテスト"
+        mapView.addAnnotation(myPin)
         mapView.setRegion(region,animated:true)
+        mapView.delegate = self
     }
     
     func setLayout(){
@@ -67,12 +71,16 @@ extension ViewController: CLLocationManagerDelegate {
                 break
         }
     }
+    //破棄されたタイミングでピンの選択解除
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // タップされたピンの位置情報
-        print(view.annotation?.coordinate)
-        // タップされたピンのタイトルとサブタイトル
         print(view.annotation?.title)
-        print(view.annotation?.subtitle)
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
+        //ここがpushとは違う
+        self.present(nextView, animated: true, completion: nil)
+
+
+        
     }
     //中心に戻るメゾット
     private func goBackCenter() {

@@ -15,6 +15,8 @@
 		0EAF083C254456A900202264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF083A254456A900202264 /* LaunchScreen.storyboard */; };
 		0EAF0847254456AA00202264 /* MapAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0846254456AA00202264 /* MapAppTests.swift */; };
 		0EAF0852254456AA00202264 /* MapAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0851254456AA00202264 /* MapAppUITests.swift */; };
+		0EAF0863254462E600202264 /* SaunaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF0862254462E600202264 /* SaunaModel.swift */; };
+		0EAF08682544EFA100202264 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAF08672544EFA100202264 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		0EAF084D254456AA00202264 /* MapAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EAF0851254456AA00202264 /* MapAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppUITests.swift; sourceTree = "<group>"; };
 		0EAF0853254456AA00202264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EAF0862254462E600202264 /* SaunaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaunaModel.swift; sourceTree = "<group>"; };
+		0EAF08672544EFA100202264 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				0EAF0838254456A900202264 /* Assets.xcassets */,
 				0EAF083A254456A900202264 /* LaunchScreen.storyboard */,
 				0EAF083D254456AA00202264 /* Info.plist */,
+				0EAF0862254462E600202264 /* SaunaModel.swift */,
+				0EAF08672544EFA100202264 /* DetailViewController.swift */,
 			);
 			path = MapApp;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EAF0863254462E600202264 /* SaunaModel.swift in Sources */,
 				0EAF0834254456A600202264 /* ViewController.swift in Sources */,
+				0EAF08682544EFA100202264 /* DetailViewController.swift in Sources */,
 				0EAF0830254456A600202264 /* AppDelegate.swift in Sources */,
 				0EAF0832254456A600202264 /* SceneDelegate.swift in Sources */,
 			);
