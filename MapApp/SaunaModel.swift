@@ -10,10 +10,10 @@ import Foundation
 struct Sauna: Decodable {
     let name: String
     let address: String
-    let openTime: Date
-    let closeTime: Date
+    let openTime: String
+    let closeTime: String
     let timeException: String?
-    let url: URL
+    let url: String
 }
 //平日か休日で時間変わる、例外の場合どうする？
 //

@@ -13,6 +13,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     let mapView: MKMapView = .init()
     var locationManager: CLLocationManager?
+    let testData: Sauna = .init(name: "フォーシーズンズホテル丸の内 東京", address:"    東京都 千代田区 丸の内１丁目１１−１ " , openTime: "13:20:00", closeTime: "13:20:00", timeException: nil, url: "https://sauna-ikitai.com/saunas/7385")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
         region.center = location
         region.span.latitudeDelta = 0.02
         region.span.longitudeDelta = 0.02
-        let myPin = MKPointAnnotation()
-        myPin.coordinate = location
-        myPin.title = "テスト"
-        myPin.subtitle = "さぶテスト"
-        mapView.addAnnotation(myPin)
+//        let myPin = MKPointAnnotation()
+//        myPin.coordinate = location
+//        myPin.title = "テスト"
+//        myPin.subtitle = "さぶテスト"
+//        mapView.addAnnotation(myPin)
         mapView.setRegion(region,animated:true)
         mapView.delegate = self
+        let testPin = MKPointAnnotation ()
+        makePin(sauna: testData){ pin in
+            self.mapView.addAnnotation(pin)
+        }
     }
     
     func setLayout(){
@@ -87,6 +92,25 @@ extension ViewController: CLLocationManagerDelegate {
            self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: false)
            self.mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: false)
        }
+    func makePin(sauna:Sauna, comletion: @escaping (MKPointAnnotation)->()){
+        let pin = MKPointAnnotation()
+        var saunaAdress: String = .init()
+        saunaAdress = sauna.address
+        var saunaLocation:CLLocationCoordinate2D = .init()
+        CLGeocoder().geocodeAddressString(saunaAdress) { placemarks, error in
+            if let lat = placemarks?.first?.location?.coordinate.latitude {
+                print("緯度 : \(lat)")
+                saunaLocation.latitude = lat
+            }
+            if let lng = placemarks?.first?.location?.coordinate.longitude {
+                print("経度 : \(lng)")
+                saunaLocation.longitude = lng
+            }
+            pin.coordinate = saunaLocation
+            pin.title = sauna.name
+            comletion(pin)
+        }
+    }
     
 }
 
