@@ -16,6 +16,7 @@ final class Cell: UITableViewCell {
         setup()
     }
 
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -23,8 +24,8 @@ final class Cell: UITableViewCell {
     
     private func setup() {
     
-        self.addSubview(namelabel)
-        self.addSubview(detailalbel)
+        contentView.addSubview(namelabel)
+        contentView.addSubview(detailalbel)
         namelabel.translatesAutoresizingMaskIntoConstraints = false
         detailalbel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -43,6 +44,8 @@ final class Cell: UITableViewCell {
         ])
         namelabel.text = "ああああああ"
         detailalbel.text = "いいいいいいい"
+        namelabel.textColor = .black
+        namelabel.backgroundColor = .red
     }
     
     
