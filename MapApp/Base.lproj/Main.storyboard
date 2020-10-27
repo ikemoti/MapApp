@@ -19,7 +19,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="VPX-YO-SIe" kind="presentation" id="jLt-UM-thY"/>
+                        <segue destination="VPX-YO-SIe" kind="presentation" modalPresentationStyle="pageSheet" id="jLt-UM-thY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

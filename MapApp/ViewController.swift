@@ -8,12 +8,17 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FloatingPanel
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
     let mapView: MKMapView = .init()
     var locationManager: CLLocationManager?
     var pins: [MKPointAnnotation] = []
+    var fpc = FloatingPanelController()
+    let contentVC = DetailViewController()
     let testData: [Sauna] = [
         .init(name: "フォーシーズンズホテル丸の内 東京", address:"    東京都 千代田区 丸の内１丁目１１−１ " , openTime: "13:20:00", closeTime: "13:20:00", timeException: nil, url: "https://sauna-ikitai.com/saunas/7385"),
         .init(name: "ティップネス丸の内スタイル", address:" 東京都 千代田区 丸の内１丁目１−１ " , openTime: "07:00:00", closeTime: "23:00:00", timeException: nil, url: "https://sauna-ikitai.com/saunas/5559"),]
@@ -25,6 +30,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         makePin(sauna: testData){ pin in
             self.mapView.addAnnotations(self.pins)
         }
+        fpc.set(contentViewController: contentVC)
+        fpc.addPanel(toParent: self)
     }
     
     func setLayout(){
@@ -50,6 +57,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         region.span.longitudeDelta = 0.02
         mapView.setRegion(region,animated:true)
         mapView.delegate = self
+        
     }
 
 
@@ -77,10 +85,7 @@ extension ViewController: CLLocationManagerDelegate {
     }
     //破棄されたタイミングでピンの選択解除
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
-        self.present(nextView, animated: true, completion: nil)
-
+        contentVC.setData(text: "aaaa")
 
         
     }
